@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+
+#CONSTANTS
+NOTES = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
+DIATONIC_SCALE = [0,2,2,1,2,2,2]
+MAJOR_TRIAD = [0,4,3]
+MINOR_TRIAD = [0,3,4]
+DIM_TRIAD = [0,3,3]
+
+MAJOR_SCALE_CHORDS = ["Major","Minor","Minor","Major","Major","Minor","Diminished"]
+DIATONIC_MODES = ["Major","Dorian","Phrygian","Lydian","Mixolydian","Aeolian","Locrian"]
+TRIAD = [0,2,2]
+SEVENTHS = [0,2,2,2]
+SIXTHS = [0,2,2,1]
+
+
+class Music:
+  def __init__(self,key):
+      self.key = key
+
+    #Get the major scale notes for a given key
+  def get_major_scale_notes(self):
+      scale = {}
+      notes = []
+      tonic = NOTES.index(self.key)
+      note = tonic
+      count = 1
+
+      for interval in DIATONIC_SCALE:
+          note = note + interval
+          if note > 11:
+              note -= 12
+          notes.append(NOTES[note])
+          count += 1
+      return notes
+
+    #Get a triad for a given note in a given key
+  def get_triad(self, key="C", root="C"):
+        scale = self.get_major_scale_notes()
+        note = scale.index(root)
+        chords = {}
+        triad = []
+
+        for interval in TRIAD:
+            note = note + interval
+            if note > 6:
+                note -= 7
+            triad.append(scale[note])
+        return triad
+
+    #Get the 7th chord for a given note in a given key
+  def get_seventh(self, key="C",root="C"):
+        scale = self.get_major_scale_notes()
+        note = scale.index(root)
+        seventh = []
+
+        for interval in SEVENTHS:
+            note = note + interval
+            if note > 6:
+                note -= 7
+            seventh.append(scale[note])
+        return seventh
+
+    #Get the 6th chord for a given note in a given key
+  def get_sixth(self, key="C",root="C"):
+        scale = self.get_major_scale_notes(key)
+        note = scale.index(root)
+        sixth = []
+
+        for interval in SIXTHS:
+            note = note + interval
+            if note > 6:
+                note -= 7
+            sixth.append(scale[note])
+        return sixth
+
+    #Get the chords for a given key
+  def get_major_scale_chords(self):
+        chord_info = {}
+        scale = self.get_major_scale_notes()
+
+        count = 1
+
+        for note in scale:
+            chord_info[count] = \
+            {note + " " + MAJOR_SCALE_CHORDS[count - 1]:[{'triad':self.get_triad(note)}, \
+                                       {'seventh':self.get_seventh(note)}, \
+                                       {'sixth':self.get_sixth(note)}]}
+            count += 1
+        return(chord_info)
+
+#Get all information for all keys
+def get_all_keys():
+    all_keys = {}
+
+    for note in NOTES:
+        print(note)
+        all_keys[note] = [{"scale": Music(note).get_major_scale_notes()}, \
+                          {"chords": Music(note).get_major_scale_chords()}]
+    return all_keys
+
+if __name__ == '__main__':
+    all_music_info = get_all_keys()
+
+
+    Music(note).get_major_scale_notes()

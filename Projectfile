@@ -1,0 +1,62 @@
+#!/bin/bash
+# usage: ./Projectfile [command]
+#
+
+##############################################################################
+# workflow
+#
+
+images () {
+  docker-compose build
+}
+
+shell () {
+  docker-compose run --rm shell /bin/bash
+}
+
+view () {
+  docker image build -t music-app .
+  docker run -p 5001:8080 -d music-app
+}
+
+up () {
+  docker run -p 5001:5000 -d music-app
+}
+
+down () {
+  docker stop $(docker ps -aq)
+  docker system prune -a
+}
+
+lint () {
+  list-project-dirs | parallel "terraform fmt -check {}"
+  yapf -r -d bin lib
+}
+
+fix () {
+  list-project-dirs | parallel "terraform fmt {}"
+  yapf -r -vv -i bin lib
+}
+
+plan () {
+  terraform plan -lock=false
+}
+
+apply () {
+  terraform apply
+}
+
+#############################################################################
+# boilerplate
+set -e
+
+list () {
+  compgen -A function
+}
+
+if list | grep -qFx -- "${1:-}"
+then "$@"
+else
+  printf "unknown command: %s\n" "$1" >&2
+  exit 1
+fi

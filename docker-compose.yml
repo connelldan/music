@@ -1,0 +1,10 @@
+---
+version: '3.6'
+services:
+  shell:
+    build:
+      network: host
+      context: .
+    volumes:
+    - .:/app
+    - ./tmp/home:/homeappuser

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %} 
+<h2>Diatonic Chords</h2>
+<p>Find what chords belong in which key and why. You can use this a a refrence when writing songs.</p>
+
+<h3>select a key:</h3>
+<form form id ="myForm" class="form-inline" method="POST" action="#">
+    <div class="form-group">
+      <div class="input-group">
+          <span class="input-group-addon">  </span>
+              <select name="comp_select" class="custom-select d-block w-100">
+                {% for n in notes %}
+                <option name="note" value="{{ n.note }}">{{ n.note }}</option>
+                {% endfor %}
+              </select>
+      </div>
+      <button name = "nm" type="submit" class="btn btn-sm btn-block btn-primary">Go</button>
+    </div>
+  </form>
+
+
+{% endblock %}

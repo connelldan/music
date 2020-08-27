@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %} 
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Song Help</h1>
+    <p class="lead">A one stop shop to help you write songs. If you're either new to music or are fighting a writers block -- this site will help you out! Here you can find an easy-to-understand way of learning and applying music theory to your songs.</p>
+  <img src="/static/images/circle-of-fifths.png" width="30%" height="auto" class="center">
+</div>
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Basic Music Theory</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title pricing-card-title"><small class="text-muted">Major & Minor</small></h3>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Understand how chords are made</li>
+            <li>Learn how to use chords</li>
+            <li>Stay in key</li>
+            <li>Learn the foundations</li>
+          </ul>
+          <button type="button" class="btn btn-lg btn-block btn-primary">Learn the Basics</button>
+        </div>
+      </div>
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Diatonic Chords</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title pricing-card-title"><small class="text-muted">Triads & Sevenths</small></h3>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Learn building blocks of songs</li>
+            <li>Explore chord progression options</li>
+            <li>Snap out of writers block</li>
+            <li>Discover unique progressions</li>
+          </ul>
+          <button onclick="location.href='diatonic'" type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
+
+        </form>
+        </div>
+      </div>
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Exploratory Concepts</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title pricing-card-title"><small class="text-muted">Modes, Advanced Ideas</small></h3>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Modes</li>
+            <li>Chromaticisim</li>
+            <li>Secondary dominants</li>
+            <li>Diminished chords</li>
+          </ul>
+          <button type="button" class="btn btn-lg btn-block btn-primary">Explore New Ideas</button>
+        </div>
+      </div>
+    </div>
+  
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+        <div class="col-12 col-md">
+          <img class="mb-2" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+          <small class="d-block mb-3 text-muted">&copy; 2017-2020</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Features</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Cool stuff</a></li>
+            <li><a class="text-muted" href="#">Random feature</a></li>
+            <li><a class="text-muted" href="#">Team feature</a></li>
+            <li><a class="text-muted" href="#">Stuff for developers</a></li>
+            <li><a class="text-muted" href="#">Another one</a></li>
+            <li><a class="text-muted" href="#">Last time</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Resource</a></li>
+            <li><a class="text-muted" href="#">Resource name</a></li>
+            <li><a class="text-muted" href="#">Another resource</a></li>
+            <li><a class="text-muted" href="#">Final resource</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Team</a></li>
+            <li><a class="text-muted" href="#">Locations</a></li>
+            <li><a class="text-muted" href="#">Privacy</a></li>
+            <li><a class="text-muted" href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+  </body>
+  </html>
+{% endblock %}
